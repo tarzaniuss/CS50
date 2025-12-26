@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">🤖 AI Learning Center</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="basics.html">ML Basics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quiz.html">Quiz</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html">Resources</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero-section text-white text-center py-5">
+            <div class="container">
+                <h1 class="display-4 mb-4">Welcome to the World of AI!</h1>
+                <p class="lead mb-4">Learn everything about Artificial Intelligence in simple words</p>
+                <button class="btn btn-light btn-lg" onclick="showWelcomeAlert()">Start Learning</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container my-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <section class="mb-5">
+                        <h2 class="section-title">What is Artificial Intelligence?</h2>
+                        <p>Artificial Intelligence (AI) is a branch of computer science focused on creating systems capable of performing tasks that typically require human intelligence.</p>
+
+                        <div class="card-deck mt-4">
+                            <div class="card ai-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">🧠 Machine Learning</h5>
+                                    <p class="card-text">Algorithms that learn from data</p>
+                                    <small class="text-muted">The foundation of modern AI</small>
+                                </div>
+                            </div>
+                            <div class="card ai-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">🤖 Neural Networks</h5>
+                                    <p class="card-text">Systems that mimic the brain</p>
+                                    <small class="text-muted">Deep learning</small>
+                                </div>
+                            </div>
+                            <div class="card ai-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">💬 Natural Language Processing</h5>
+                                    <p class="card-text">AI that understands and generates text</p>
+                                    <small class="text-muted">ChatGPT, translators</small>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="mb-5">
+                        <h3>Learning Progress</h3>
+                        <div class="progress mb-3" style="height: 25px;">
+                            <div class="progress-bar bg-success progress-bar-animated" role="progressbar" style="width: 25%">
+                                25% completed
+                            </div>
+                        </div>
+                        <p><strong>Current level:</strong> Beginner</p>
+                    </section>
+                </div>
+
+                <aside class="col-lg-4">
+                    <div class="card sidebar-card">
+                        <div class="card-header">
+                            <h5>🎯 Quick Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="basics.html" class="btn btn-outline-primary btn-sm mb-2 btn-block">Learn the Basics</a></li>
+                                <li><a href="quiz.html" class="btn btn-outline-success btn-sm mb-2 btn-block">Take the Quiz</a></li>
+                                <li><a href="resources.html" class="btn btn-outline-info btn-sm btn-block">Useful Links</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-4" role="alert">
+                        <h6 class="alert-heading">💡 Fun Fact</h6>
+                        <p class="mb-0">The first artificial neuron was created in 1943!</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            <div class="container">
+                <p>&copy; 2024 AI Learning Center. Learn with joy!</p>
+            </div>
+        </footer>
+
+        <!-- Custom JavaScript -->
+        <script>
+            function showWelcomeAlert() {
+                alert('Welcome to AI Learning Center! Ready to start your journey into the world of Artificial Intelligence?');
+            }
+
+            // Progress bar animation on load
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const progressBar = document.querySelector('.progress-bar');
+                    progressBar.style.width = '25%';
+                }, 1000);
+            });
+        </script>
+    </body>
+</html>

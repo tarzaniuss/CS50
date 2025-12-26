@@ -1,0 +1,3 @@
+Based on the top 100 songs, the listener prefers music with moderate to high danceability and energy. The tempo is mostly mid-range, showing a balance between slow and fast songs. The overall mood (valence) is somewhat positive, indicating mostly upbeat tracks.
+
+This calculation might not represent the listener well because it only uses the top 100 songs from one year, ignoring other years and less popular tracks. Also, averaging values can hide variety in music taste. A better method would include weighting songs by how often they are played and considering more data over time.

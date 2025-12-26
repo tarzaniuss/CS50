@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quiz - AI Learning Center</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🤖 AI Learning Center</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="basics.html">ML Basics</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="quiz-container">
+            <div class="text-center mb-4">
+                <h1 class="section-title">🧠 AI Knowledge Test</h1>
+                <p class="lead">Test your knowledge about Artificial Intelligence and Machine Learning</p>
+
+                <!-- Quiz Progress -->
+                <div class="progress mb-3" style="height: 20px;">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 0%" id="quizProgress">
+                        Question 0 of 5
+                    </div>
+                </div>
+
+                <!-- Score Display -->
+                <div class="score-display mb-3" id="scoreDisplay" style="display: none;">
+                    Your score: <span id="currentScore">0</span>/5
+                </div>
+            </div>
+
+            <!-- Quiz Questions Container -->
+            <div id="quizContainer">
+            </div>
+
+            <!-- Quiz Controls -->
+            <div class="text-center mt-4">
+                <button class="btn btn-primary btn-lg" id="startQuizBtn" onclick="startQuiz()">
+                    Start Quiz
+                </button>
+                <button class="btn btn-success btn-lg" id="nextQuestionBtn" onclick="nextQuestion()" style="display: none;">
+                    Next Question
+                </button>
+                <button class="btn btn-info btn-lg" id="showResultsBtn" onclick="showResults()" style="display: none;">
+                    Show Results
+                </button>
+                <button class="btn btn-outline-secondary btn-lg" id="restartQuizBtn" onclick="restartQuiz()" style="display: none;">
+                    Try Again
+                </button>
+            </div>
+
+            <!-- Results Modal -->
+            <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">🎉 Quiz Results</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalResults">
+                            <!-- Results content will be inserted here -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="resources.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2024 AI Learning Center. Learn with pleasure!</p>
+        </div>
+    </footer>
+
+
+    <!-- Custom JavaScript for Quiz -->
+    <script>
+        // Quiz data
+        const quizQuestions = [
+            {
+                question: "What does the abbreviation 'AI' mean?",
+                options: ["Artificial Intelligence", "Automated Integration", "Advanced Interface", "Algorithmic Implementation"],
+                correct: 0,
+                explanation: "AI means Artificial Intelligence — a branch of computer science."
+            },
+            {
+                question: "Which type of learning requires labeled data (correct answers)?",
+                options: ["Unsupervised Learning", "Supervised Learning", "Reinforcement Learning", "Deep Learning"],
+                correct: 1,
+                explanation: "Supervised learning uses data with known correct answers."
+            },
+            {
+                question: "What is a neural network?",
+                options: ["The Internet for robots", "A system that mimics the brain's work", "A database", "An operating system"],
+                correct: 1,
+                explanation: "A neural network is a system of artificial neurons that mimics the human brain."
+            },
+            {
+                question: "Which algorithm is often used for recommendations on Netflix or YouTube?",
+                options: ["Linear Regression", "Machine Learning", "Quantum Algorithms", "Binary Search"],
+                correct: 1,
+                explanation: "Machine learning algorithms analyze your preferences and recommend similar content."
+            },
+            {
+                question: "Which is NOT an example of AI application?",
+                options: ["Google Translate", "Calculator", "Face Recognition", "Voice Assistants"],
+                correct: 1,
+                explanation: "A regular calculator performs simple calculations without AI."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+        let quizStarted = false;
+
+        function startQuiz() {
+            quizStarted = true;
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+
+            document.getElementById('startQuizBtn').style.display = 'none';
+            document.getElementById('scoreDisplay').style.display = 'block';
+
+            showQuestion();
+            updateProgress();
+        }
+
+        function showQuestion() {
+            if (currentQuestion < quizQuestions.length) {
+                const question = quizQuestions[currentQuestion];
+                const container = document.getElementById('quizContainer');
+
+                container.innerHTML = `
+                    <div class="question-card" id="currentQuestionCard">
+                        <h4 class="mb-3">Question ${currentQuestion + 1}:</h4>
+                        <p class="lead mb-4">${question.question}</p>
+                        <div class="options-container">
+                            ${question.options.map((option, index) => `
+                                <button class="option-btn" onclick="selectOption(${index})" data-option="${index}">
+                                    ${String.fromCharCode(65 + index)}. ${option}
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div class="explanation mt-3" id="explanation" style="display: none;">
+                            <div class="alert alert-info">
+                                <strong>Explanation:</strong> <span id="explanationText"></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function selectOption(selectedIndex) {
+            const question = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.option-btn');
+            const currentCard = document.getElementById('currentQuestionCard');
+
+            options.forEach(option => {
+                option.disabled = true;
+                option.classList.remove('selected');
+            });
+
+            options[selectedIndex].classList.add('selected');
+
+            if (selectedIndex === question.correct) {
+                score++;
+                currentCard.classList.add('correct');
+                options[selectedIndex].style.backgroundColor = '#28a745';
+                options[selectedIndex].style.borderColor = '#28a745';
+            } else {
+                currentCard.classList.add('incorrect');
+                options[selectedIndex].style.backgroundColor = '#dc3545';
+                options[selectedIndex].style.borderColor = '#dc3545';
+                options[question.correct].style.backgroundColor = '#28a745';
+                options[question.correct].style.borderColor = '#28a745';
+            }
+
+            userAnswers[currentQuestion] = selectedIndex;
+
+            document.getElementById('explanation').style.display = 'block';
+            document.getElementById('explanationText').textContent = question.explanation;
+
+            document.getElementById('currentScore').textContent = score;
+
+            if (currentQuestion < quizQuestions.length - 1) {
+                document.getElementById('nextQuestionBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('showResultsBtn').style.display = 'inline-block';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            document.getElementById('nextQuestionBtn').style.display = 'none';
+            showQuestion();
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            const progressBar = document.getElementById('quizProgress');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+        }
+
+        function showResults() {
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            let resultMessage = '';
+            let resultClass = '';
+
+            if (percentage >= 80) {
+                resultMessage = 'Excellent! You know AI very well! 🏆';
+                resultClass = 'text-success';
+            } else if (percentage >= 60) {
+                resultMessage = 'Good! Your knowledge is at a solid level! 👍';
+                resultClass = 'text-info';
+            } else {
+                resultMessage = 'Not bad, but there’s room for improvement! 📚';
+                resultClass = 'text-warning';
+            }
+
+            document.getElementById('modalResults').innerHTML = `
+                <div class="text-center">
+                    <h3 class="${resultClass}">${resultMessage}</h3>
+                    <div class="score-display my-3">
+                        ${score} out of ${quizQuestions.length} correct answers (${percentage}%)
+                    </div>
+                    <div class="progress mb-3" style="height: 30px;">
+                        <div class="progress-bar ${percentage >= 80 ? 'bg-success' : percentage >= 60 ? 'bg-info' : 'bg-warning'}"
+                             role="progressbar" style="width: ${percentage}%">
+                            ${percentage}%
+                        </div>
+                    </div>
+                    <p>Keep studying AI to become a true expert!</p>
+                </div>
+            `;
+
+            $('#resultsModal').modal('show');
+            document.getElementById('showResultsBtn').style.display = 'none';
+            document.getElementById('restartQuizBtn').style.display = 'inline-block';
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+            quizStarted = false;
+
+            document.getElementById('quizContainer').innerHTML = '';
+            document.getElementById('startQuizBtn').style.display = 'inline-block';
+            document.getElementById('nextQuestionBtn').style.display = 'none';
+            document.getElementById('showResultsBtn').style.display = 'none';
+            document.getElementById('restartQuizBtn').style.display = 'none';
+            document.getElementById('scoreDisplay').style.display = 'none';
+
+            const progressBar = document.getElementById('quizProgress');
+            progressBar.style.width = '0%';
+            progressBar.textContent = 'Question 0 of 5';
+        }
+
+        window.addEventListener('load', function() {
+            const title = document.querySelector('.section-title');
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(-20px)';
+
+            setTimeout(function() {
+                title.style.transition = 'all 0.5s ease';
+                title.style.opacity = '1';
+                title.style.transform = 'translateY(0)';
+            }, 200);
+        });
+    </script>
+</body>
+</html>

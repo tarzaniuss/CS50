@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Basics - AI Learning Center</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🤖 AI Learning Center</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="basics.html">ML Basics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="section-title mb-4">Machine Learning Basics</h1>
+
+                <!-- Progress tracking -->
+                <div class="progress mb-4" style="height: 25px;">
+                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%">
+                        50% of the course completed
+                    </div>
+                </div>
+
+                <!-- Accordion with ML concepts -->
+                <div class="accordion" id="mlBasicsAccordion">
+
+                    <!-- What is ML -->
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne">
+                                    <strong>1. What is Machine Learning?</strong>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-parent="#mlBasicsAccordion">
+                            <div class="card-body">
+                                <p><strong>Machine Learning (ML)</strong> is a subfield of artificial intelligence that allows computers to learn and make decisions without explicitly programming every action.</p>
+                                <blockquote class="blockquote">
+                                    <p class="mb-0">"Machine learning is the science of getting computers to learn from data."</p>
+                                    <footer class="blockquote-footer">Arthur Samuel, 1959</footer>
+                                </blockquote>
+                                <button class="btn btn-sm btn-info" onclick="showMLFact()">Fun fact</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Types of ML -->
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
+                                    <strong>2. Types of Machine Learning</strong>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" data-parent="#mlBasicsAccordion">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card ai-card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">📚 Supervised Learning</h5>
+                                                <p class="card-text">The algorithm learns from examples with known answers</p>
+                                                <small><em>Example: spam detection</em></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card ai-card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">🔍 Unsupervised Learning</h5>
+                                                <p class="card-text">Finding hidden patterns in data</p>
+                                                <small><em>Example: customer segmentation</em></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card ai-card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">🎮 Reinforcement Learning</h5>
+                                                <p class="card-text">Learning through rewards and penalties</p>
+                                                <small><em>Example: games, robotics</em></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Terms -->
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">
+                                    <strong>3. Key Terms</strong>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" data-parent="#mlBasicsAccordion">
+                            <div class="card-body">
+                                <dl class="row">
+                                    <dt class="col-sm-3">Algorithm</dt>
+                                    <dd class="col-sm-9">A set of rules for solving a problem</dd>
+
+                                    <dt class="col-sm-3">Data</dt>
+                                    <dd class="col-sm-9">Information used to train a model</dd>
+
+                                    <dt class="col-sm-3">Model</dt>
+                                    <dd class="col-sm-9">The result of training an algorithm on data</dd>
+
+                                    <dt class="col-sm-3">Training</dt>
+                                    <dd class="col-sm-9">The process of teaching a model with data</dd>
+
+                                    <dt class="col-sm-3">Prediction</dt>
+                                    <dd class="col-sm-9">The output of a trained model</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Applications -->
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour">
+                                    <strong>4. Applications of ML in Life</strong>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse" data-parent="#mlBasicsAccordion">
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">🎵 Music recommendations (Spotify, YouTube Music)</li>
+                                    <li class="list-group-item">🛒 Online shopping (Amazon, eBay)</li>
+                                    <li class="list-group-item">🗺️ Navigation and maps (Google Maps, Waze)</li>
+                                    <li class="list-group-item">📧 Email spam filtering</li>
+                                    <li class="list-group-item">🏥 Medical diagnostics</li>
+                                    <li class="list-group-item">🚗 Autonomous cars</li>
+                                    <li class="list-group-item">💬 Translators (Google Translate)</li>
+                                    <li class="list-group-item">🔍 Search engines</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive element -->
+                <div class="text-center mt-5">
+                    <h4>Ready to test your knowledge?</h4>
+                    <a href="quiz.html" class="btn btn-success btn-lg">Take the quiz</a>
+                    <button class="btn btn-outline-primary btn-lg ml-2" onclick="updateProgress()">Complete the lesson</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2024 AI Learning Center. Learn with pleasure!</p>
+        </div>
+    </footer>
+
+
+
+    <!-- Custom JavaScript -->
+    <script>
+        function showMLFact() {
+            alert('Fun fact: The first machine learning algorithm (linear regression) was invented as early as 1805 by mathematician Adrien-Marie Legendre!');
+        }
+
+        function updateProgress() {
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = '75%';
+            progressBar.textContent = '75% of the course completed';
+            progressBar.classList.remove('bg-warning');
+            progressBar.classList.add('bg-success');
+
+            alert('Congratulations! You have successfully completed the lesson on the basics of machine learning.');
+        }
+
+        // Animation for card appearance on scroll
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.ai-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+                if (isVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

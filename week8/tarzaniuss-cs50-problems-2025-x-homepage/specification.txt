@@ -1,0 +1,14 @@
+HTML Tags:
+<html>, <head>, <body>, <title>, <meta>, <link>, <script>, <nav>, <div>, <ul>, <li>, <a>, <button>, <main>, <section>, <h1>, <h3>, <h4>, <h5>, <p>, <span>, <form>, <input>, <footer>, <small>
+
+CSS Selectors:
+body, html, main, .section-title, .resource-card, .ai-card, .sidebar-card, .quiz-container, .question-card, .option-btn, .score-display, .progress-bar, .card, .list-group-item
+
+CSS Properties:
+display, flex, flex-direction, opacity, transform, transition, margin, padding, background, background-color, border, border-radius, box-shadow, width, height, font-size, color
+
+JavaScript:
+Used to make the site interactive by handling quiz functionality, filtering resources, displaying tooltips and course info, animating elements on scroll, and managing newsletter subscription alerts.
+
+Bootstrap:
+Integrated for responsive navigation, grid layouts, buttons, cards, badges, progress bars, modals, and form styling to enhance the visual design and layout of the website.
